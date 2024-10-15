@@ -1,0 +1,29 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+ 
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: BlockBuster
+
+  username: cristobal
+  password: admin1234
+  host: localhost
+  port: 5432
+
+  test:
+  <<: *default
+  database: BlockBuster_test
+  username: cristobal
+  password: admin1234
+  host: localhost
+  port: 5432
+
+production:
+  <<: *default
+  database: BlockBuster_production
+  username: BlockBuster
+  password: <%= ENV["BLOCKBUSTER_DATABASE_PASSWORD"] %>
